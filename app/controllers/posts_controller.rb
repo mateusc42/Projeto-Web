@@ -51,7 +51,6 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks para compartilhar configuração comum ou restrições entre ações.
     def set_post
       @post = Post.find(params[:id])
     end
