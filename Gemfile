@@ -22,15 +22,17 @@ gem 'uglifier', '>= 1.3.0'
 # Criação de usuários comuns e administradores
 gem 'devise'
 # Renderização do navegadores de forma padronizada
+gem 'simple_form'
+=begin
+# Biblioteca de Autorização
 gem 'normalize-rails'
 # Ajuda na criação de formulários
-gem 'simple_form'
-# Biblioteca de Autorização
 gem 'cancancan'
 # Biblioteca de Anexos
 gem 'paperclip'
 # Soft Delete 
 gem 'paranoia'
+=end
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
