@@ -12,4 +12,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true
+  has_many :posts, dependent: :destroy
 end
