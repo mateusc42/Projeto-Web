@@ -1,0 +1,14 @@
+<%= simple_form_for [parent, comment] do |f| %>
+	<% if comment.errors.any? %>
+		<h3 class='row'><%= pluralize(comment.errors.count, "error") %></h3>
+	<% end %>
+  
+  <div class="comments">
+  	<%#= f.association :user %>
+    <%= f.input :body, label: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Criar Comentário' %>
+  </div>
+<% end %>

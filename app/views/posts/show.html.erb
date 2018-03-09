@@ -11,4 +11,11 @@
 		| <font color="#4CAF50"><%= link_to 'Voltar', posts_path, class: 'btn btn-outline-primary' %></font>
 	</p>
 	<p class="content"><%= @post.content %></p>
+
+	<h2 id='row' >Comments:</h2>
+		<ul class="comment_list">
+			<%= render(partial: 'comments/comment', collection: @post.comments) %>
+		</ul>
+	<h4 class='row'>Adicionar Comentário:</h4>
+	<%= render(partial: 'comments/form', locals: { parent: @post, comment: @post.comments.build }) %>
 </div>
