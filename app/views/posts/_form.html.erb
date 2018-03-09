@@ -1,0 +1,17 @@
+<%= simple_form_for(@post) do |f| %>
+  <% if post.errors.any? %>
+    <%= flash[:alert] = "All fields must be filled in!" %>
+  <% end %> 
+  <div class="form-inputs">
+    <%#= f.association :user %>
+    <%= f.input :title, label: 'Título do Post' %><br><br>
+    <%= f.input :content, input_html: { rows: 5 }, label: 'Conteúdo do Post' %><br><br>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Criar Post" %>
+    <button class="button"><%= link_to 'Voltar', root_path %></button>
+  </div>
+
+  <h4>* - Campos Obrigatórios</h4>
+<% end %>

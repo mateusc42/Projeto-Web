@@ -1,0 +1,22 @@
+<div id="post_<%= post.id %>" class='post'>
+  
+  <div class="post_wrapper">
+    <h2 class="title"><%= link_to post.title, post %></h2>
+
+    <small class='post_info'>By 
+      <%= post.user.name %> &bull;
+      <%= post.created_at.strftime("%m %b %Y") %>
+      <%= simple_format truncate(post.content, length: 70){link_to "Ler mais", post} %>
+    </small>
+
+    <% if user_signed_in? %>
+      <button class="buttonactions buttonactions1"><%= link_to "Abrir", post %></button>
+      <% if post.user == current_user %>
+        <button class="buttonactions buttonactions2"><%= link_to "Editar", edit_post_path(post) %></button>
+        <button class="buttonactions buttonactions3"><%= link_to "Excluir", post, method: :delete, data: { confirm: "Você tem certeza?" } %></button>
+      <% end %>
+    <% end %>
+
+
+  </div>
+</div>
