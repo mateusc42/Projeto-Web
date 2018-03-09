@@ -23,9 +23,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 # Renderização do navegadores de forma padronizada
 gem 'simple_form'
-=begin
 # Biblioteca de Autorização
 gem 'normalize-rails'
+=begin
 # Ajuda na criação de formulários
 gem 'cancancan'
 # Biblioteca de Anexos

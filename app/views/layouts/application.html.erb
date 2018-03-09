@@ -1,14 +1,81 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProjetoWeb</title>
+    <title>Blog de Mateus</title>
+    <%= favicon_link_tag 'favicon.png' %>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Raleway:400,700' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <div id="sidebar">
+      <ul><li class="title">Blog de Mateus</li></ul>
+      <div id="logo">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.svg" %>
+        <% end %>
+      </div>
+
+
+      <ul>
+        <li class="category">Website</li>
+        <li><%= link_to "Blog", root_path %></li>
+        <li><%= link_to "Sobre", about_path %></li>
+      </ul>
+
+      <ul>
+        <li class="category">Social</li>
+        <li><a href="https://twitter.com/mateuscxd">Twitter</a></li>
+        <li><a href="https://www.instagram.com/mateusc42/">Instagram</a></li>
+        <li><a href="https://github.com/mateusc42">Github</a></li>
+        <li><a href="mailto:mcgs@cin.ufpe.br">Email</a></li>
+      </ul>
+      
+      <% if signed_in? and current_user.superadmin? %>
+        <%= link_to "Admin Login", root_path, class: "sign_in" %>
+      <% end %>
+    </div>
+    
+    <div id="main_content">
+      
+      <div id="header">
+        <% if current_page?(root_path) %>
+          <p>Todos os Posts</p>
+        <% elsif current_page?(about_path) %>
+          <p>Sobre</p>
+        <% else %>
+          <%= link_to "Voltar para Todos os Posts", root_path %>
+        <% end %>
+
+        <div class="buttons">
+          <% if signed_in? and (current_user.admin? or current_user.superadmin?) %>
+            Olá, <%= current_user.name %>
+            <button class="button"><%= link_to "Criar Novo Post", new_post_path %></button>
+            <button class="button"><%= link_to "Profile", edit_user_registration_path %></button>
+            <button class="button"><%= link_to 'Log out', destroy_user_session_path, method: :delete, data: {confirm:"Você tem certeza?"}%></button>
+          <% elsif signed_in? and current_user.user? %>
+            Olá, <%= current_user.name %>
+            <button class="button"><%= link_to "Profile", edit_user_registration_path %></button>
+            <button class="button"><%= link_to 'Log out', destroy_user_session_path, method: :delete, data: {confirm:"Você tem certeza?"}%></button>
+          <% else %>
+            <button class="button"><%= link_to "Cadastre-se", new_user_registration_path %></button>
+            <button class="button"><%= link_to "Login", new_user_session_path %></button>
+          <% end %>
+        </div>
+      </div>
+      
+      <% flash.each do |type, message| %>
+        <div class="alert <%= alert_class_for(type) %>">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <%= message %>
+        </div>
+      <% end %>
+      
+      <%= yield %>
+    </div>
+
   </body>
 </html>

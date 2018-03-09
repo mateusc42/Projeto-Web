@@ -1,18 +1,22 @@
-<h2>Sign up</h2>
+<div id="page_wrapper">
+  <h2>Cadastro do Usuário</h2><br><br>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="form-inputs">
-  	<%= f.input :name, required: true, autofocus: true %>
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :name, label: 'Nome do Usuário', required: true, autofocus: true %><br><br>
+      <%= f.input :email, label: 'Email do Usuário', required: true, autofocus: true %><br><br>
+      <%= f.input :password, label: 'Password (No mínimo 6 caracteres)', required: true %><br><br>
+      <%= f.input :password_confirmation, label: 'Confirmação do Password', required: true %><br><br>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Cadastrar" %>
+      <button class="button"><%= link_to 'Voltar', root_path %></button>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <h4>* - Campos Obrigatórios</h4>
+  <% end %>
+
+</div>
