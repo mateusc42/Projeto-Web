@@ -1,21 +1,24 @@
 <div id="post_content">
-	<h1 class="title"><%= @post.title %></h1>
-	<p class="date">
-		Submitted <%= time_ago_in_words(@post.created_at) %> Ago
-		<% if user_signed_in? %>
-			<% if @post.user == current_user %>
-				| <font color="#008CBA"><%= link_to 'Editar', edit_post_path(@post) %></font>
-				| <font color="#f44336"><%= link_to 'Excluir', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %></font>
-			<% end %>
-		<% end %>
-		| <font color="#4CAF50"><%= link_to 'Voltar', posts_path, class: 'btn btn-outline-primary' %></font>
-	</p>
-	<p class="content"><%= @post.content %></p>
+  <h1 class="title"><%= @post.title %></h1>
+  <p class="date">
+    Submitted <%= time_ago_in_words(@post.created_at) %> Ago
+    <% if user_signed_in? %>
+      <% if @post.user == current_user %>
+        | <font color="#008CBA"><%= link_to 'Editar', edit_post_path(@post) %></font>
+        | <font color="#f44336"><%= link_to 'Excluir', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %></font>
+      <% end %>
+    <% end %>
+    | <font color="#4CAF50"><%= link_to 'Voltar', posts_path, class: 'btn btn-outline-primary' %></font>
+  </p><br>
 
-	<h2 id='row' >Comments:</h2>
-		<ul class="comment_list">
-			<%= render(partial: 'comments/comment', collection: @post.comments) %>
-		</ul>
-	<h4 class='row'>Adicionar Comentário:</h4>
-	<%= render(partial: 'comments/form', locals: { parent: @post, comment: @post.comments.build }) %>
+  <div class='conteudo'>
+    <% if @post.image.exists? %>
+      <div class='imagem'>
+        <%= image_tag @post.image.url(:medium) %>
+      </div>
+    <% end %>
+    <%= @post.content %>
+  </div><br><br>
+
+  <%= render "comments/index", commentable: @post %>
 </div>

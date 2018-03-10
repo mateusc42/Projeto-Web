@@ -5,11 +5,12 @@
   <div class="form-inputs">
     <%#= f.association :user %>
     <%= f.input :title, label: 'Título do Post' %><br><br>
+    <%= f.input :image, as: :file, label: false %><br><br>
     <%= f.input :content, input_html: { rows: 5 }, label: 'Conteúdo do Post' %><br><br>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Criar Post" %>
+    <%= f.button :submit, "Postar" %>
     <button class="button"><%= link_to 'Voltar', root_path %></button>
   </div>
 

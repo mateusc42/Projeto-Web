@@ -16,6 +16,8 @@
  */
 
  @import 'alerts';
+ @import 'comments';
+ @import 'posts';
 
 html, body {
 	font-family: 'Raleway', sans-serif;
@@ -194,6 +196,18 @@ a {
 			color: #9eafba;
 			margin: .5em 0 0 0;
 		}
+		.post_info {
+			padding: 3em;
+		}
+		#post_image {
+			width: 140px;
+			float: left;
+			margin-right: 2em;
+			img {
+				width: 100%;
+				border-radius: 0.35em;
+			}
+		}
 	}
 	#post_content {
 		padding: 1em 3em;
@@ -208,51 +222,18 @@ a {
 			font-size: 1.1em;
 			line-height: 1.75;
 		}
+		#content_image {
+			width: 300px;
+			float: right;
+			margin-left: 2em;
+			img {
+				width: 100%;
+				border-radius: 0.35em;
+			}
+		}
 		.date_and_author {
 			color: #9eafba;
 			margin: .5em 0 2em 0;
-		}
-		#comments {
-			h2 {
-				margin: 3em 0 1em 0;
-				border-bottom: 1px solid #d6dce0;
-				padding-bottom: 0.5em;
-			}
-			h3 {
-				margin-top: 2em;
-			}
-			.comment {
-				border-bottom: 1px solid #d6dce0;
-				padding: 1.5em 2em;
-				.clear_both {
-					clear: both;
-				}
-				&:after {
-					clear: both;
-				}
-				.comment_content {
-					float: left;
-					.comment_name {
-						margin: 1em 0 0 0;
-						font-size: 0.7em;
-						text-transform: uppercase;
-					}
-					.comment_body {
-						font-size: 1.2em;
-						margin: 0.2em 0 0 0;
-					}
-					.comment_time {
-						margin-top: 1.2em;
-						font-size: .8em;
-					}
-				}
-				.button {
-					float: right;
-				}
-			}
-			input[type="text"], textarea {
-				width: 50%;
-			}
 		}
 	}
 	#page_wrapper {

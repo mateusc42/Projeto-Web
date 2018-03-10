@@ -25,11 +25,11 @@ gem 'devise'
 gem 'simple_form'
 # Biblioteca de Autorização
 gem 'normalize-rails'
+# Biblioteca de Anexos
+gem 'paperclip'
 =begin
 # Ajuda na criação de formulários
 gem 'cancancan'
-# Biblioteca de Anexos
-gem 'paperclip'
 # Soft Delete 
 gem 'paranoia'
 =end

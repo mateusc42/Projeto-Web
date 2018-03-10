@@ -1,12 +1,22 @@
 <div id="post_<%= post.id %>" class='post'>
   
   <div class="post_wrapper">
-    <h2 class="title"><%= link_to post.title, post %></h2>
 
-    <small class='post_info'>By 
+    <div id="post_image">
+      <%= link_to (image_tag post.image.url(:thumb),:title => "Post"), post %>
+    </div>
+
+    <h2 class="title"><%= link_to post.title, post %></h2>
+    
+    <small>By 
       <%= post.user.name %> &bull;
       <%= post.created_at.strftime("%m %b %Y") %>
-      <%= simple_format truncate(post.content, length: 70){link_to "Ler mais", post} %>
+      <% if user_signed_in? %>
+        <%= simple_format truncate(post.content, length: 70){link_to "Ler mais", post} %>
+      <% else %>
+        <%= simple_format truncate(post.content, length: 280) %>
+        <h3><font color="#33acb7"><%= link_to "Ler mais", post%></font></h3>
+      <% end %>
     </small>
 
     <% if user_signed_in? %>
