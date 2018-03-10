@@ -1,3 +1,25 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.commentss {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  padding: 1em;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+h2.comments-header {
+  color: #33acb7 !important;
+  margin-bottom: 0.3em !important;
+}
+
+ul.comments-list {
+  padding-left: 1.3em;
+  & > li {}
+  ul { padding-left: 2.3em; }
+}
