@@ -32,7 +32,15 @@
         <li><a href="https://www.instagram.com/mateusc42/">Instagram</a></li>
         <li><a href="https://github.com/mateusc42">Github</a></li>
         <li><a href="mailto:mcgs@cin.ufpe.br">Email</a></li>
-      </ul>
+      </ul><br><br><br>
+      
+      <% if current_page?(root_path) or current_page?(posts_path) %>
+        <ul>
+          <li class="category">Download:</li>
+          <font color="#A9A9A9" face="Georgia"> <%= link_to "CSV", posts_path(format: "csv") %> | </font>
+          <font color="#A9A9A9" face="Georgia"> <%= link_to "Excel", posts_path(format: "xls") %> </font>
+        </ul>
+      <% end %>
       
       <% if signed_in? and current_user.superadmin? %>
         <%= link_to "Admin Login", root_path, class: "sign_in" %>
