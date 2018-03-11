@@ -4,6 +4,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order( created_at: :desc )
+    respond_to do |format|
+      format.html
+      format.csv { send_data @posts.to_csv }
+      format.xls # { send_data @posts.to_csv(col_sep: "\t") }
+    end
   end
 
   def show
