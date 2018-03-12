@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+                                        
+user_array = []                                                         
+(1..4).each do |num|                                                       
+  user_array <<  User.create!(name: "User#{num}", email: "user#{num}@user.com", password: "123456", password_confirmation: "123456")                 
+end                                                                        
+
+user_array.each do |user|                                            
+  (1..2).each do |num|                                                    
+    Post.create!(title: "Post#{num}", content: "Text#{num}", user_id: user.id)        
+  end                                                                      
+end      

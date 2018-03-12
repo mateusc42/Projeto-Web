@@ -4,6 +4,9 @@
     <h3>&nbsp&nbsp&nbsp&nbspNão foi publicada nenhuma postagem até o momento.</h3>
   <% else %>
     <%= render @posts %>
+    <div class="digg_pagination">
+	    <%= will_paginate @posts, :container => false, previous_label: "Anterior", next_label: "Próxima"%>
+	  </div>
   <% end %>
 
 </div>
