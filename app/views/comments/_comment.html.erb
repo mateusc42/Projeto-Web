@@ -3,7 +3,7 @@
 	<p class="comment_body"><%= comment.body %>&nbsp&nbsp<small class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</small><br/>
 	<small>Enviador por <%= comment.user.name %></small><br>
 	<button class="buttonactions buttonactions1"><%= link_to 'Responder', new_comment_comment_path(comment), class: 'btn btn-default btn-xs' %></button>
-	<button class="buttonactions buttonactions3"><%= link_to "Excluir", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs' %></button>
+	<button class="buttonactions buttonactions3"><%= link_to "Excluir", [comment.post, comment, type: :normal], method: :delete, data: { confirm: "Você tem certeza?" }, class: 'btn btn-default btn-xs' %></button>
 	<button class="buttonactions buttonactions2"><%= link_to 'Editar', edit_comment_comment_path(comment), class: 'btn btn-default btn-xs' %></button></p>
 	
 	<% unless comment.comments.empty? %>

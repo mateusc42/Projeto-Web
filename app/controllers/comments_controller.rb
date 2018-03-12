@@ -31,8 +31,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
+    @comment = Comment.with_deleted.find(params[:id])
+    if params[:type] == 'normal'
+      @comment.destroy
+    elsif params[:type] == 'forever'
+      @comment.really_destroy!
+    elsif params[:type] == 'undelete'
+      @comment.restore(:recursive => true)
+    end
     flash[:notice] = "Successfully destroyed comment."
     redirect_to post_path(@comment.post)
   end

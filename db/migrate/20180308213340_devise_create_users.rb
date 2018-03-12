@@ -4,6 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
       ## Database authenticatable
+      t.datetime :deleted_at
       t.integer :role
       t.string :name
       t.string :email,              null: false, default: ""
@@ -40,6 +41,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
+    add_index :users, :deleted_at
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
 

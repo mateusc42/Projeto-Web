@@ -27,11 +27,11 @@ gem 'simple_form'
 gem 'normalize-rails'
 # Biblioteca de Anexos
 gem 'paperclip'
+# Soft Delete 
+gem 'paranoia'
 =begin
 # Ajuda na criação de formulários
 gem 'cancancan'
-# Soft Delete 
-gem 'paranoia'
 =end
 
 # Use CoffeeScript for .coffee assets and views

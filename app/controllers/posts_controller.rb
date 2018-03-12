@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update]
 
   def index
     @posts = Post.order( created_at: :desc )
@@ -48,7 +48,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    @post = Post.with_deleted.find(params[:id])
+    if params[:type] == 'normal'
+      @post.destroy
+    elsif params[:type] == 'forever'
+      @post.really_destroy!
+    elsif params[:type] == 'undelete'
+      @post.restore(:recursive => true)
+    end
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }

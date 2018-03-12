@@ -5,8 +5,10 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.string :title
       t.text :content
       t.attachment :image
+      t.datetime :deleted_at
 
       t.timestamps
     end
+    add_index :posts, :deleted_at
   end
 end
