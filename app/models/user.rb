@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_paranoid
   enum role: [:user, :admin, :superadmin]
   after_initialize :set_default_role, :if => :new_record?
 
@@ -9,6 +10,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :email, uniqueness: {conditions: ->{with_deleted}}
   validates :name, presence: true
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
