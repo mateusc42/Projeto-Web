@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
 
   def index
-    @posts = Post.order( created_at: :desc )
+    @posts = Post.order( created_at: :desc ).page(params[:page]).per_page(4)
     respond_to do |format|
       format.html
       format.csv { send_data @posts.to_csv }

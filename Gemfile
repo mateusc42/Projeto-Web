@@ -21,16 +21,18 @@ gem 'uglifier', '>= 1.3.0'
 
 # Criação de usuários comuns e administradores
 gem 'devise'
-# Renderização do navegadores de forma padronizada
+# Ajuda na criação de formulários
 gem 'simple_form'
-# Biblioteca de Autorização
+# Renderização do navegadores de forma padronizada
 gem 'normalize-rails'
 # Biblioteca de Anexos
 gem 'paperclip'
 # Soft Delete 
 gem 'paranoia'
+# Biblioteca de Paginação
+gem 'will_paginate'
 =begin
-# Ajuda na criação de formulários
+# Biblioteca de Autorização
 gem 'cancancan'
 =end
 
