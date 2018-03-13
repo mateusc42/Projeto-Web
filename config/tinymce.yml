@@ -1,0 +1,17 @@
+toolbar:
+  - fontselect |  fontsizeselect | styleselect | bold italic | forecolor backcolor | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat table | codesample | preview
+plugins:
+  - anchor
+  - charmap
+  - code
+  - codesample
+  - link
+  - lists
+  - preview
+  - table
+  - textcolor
+  - toc
+  - visualblocks
+menubar: false 
+height: 350px
+width: 954px

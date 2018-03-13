@@ -14,6 +14,6 @@ end
 
 user_array.each do |user|                                            
   (1..2).each do |num|                                                    
-    Post.create!(title: "Post#{num}", content: "Text#{num}", user_id: user.id)        
+    Post.create!(title: "Post#{num}", description: "Description#{num}", content: "Text#{num}", user_id: user.id)        
   end                                                                      
 end      

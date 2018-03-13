@@ -11,13 +11,15 @@
     | <font color="#4CAF50"><%= link_to 'Voltar', posts_path, class: 'btn btn-outline-primary' %></font>
   </p><br>
 
+  <%= @post.description %><br><br>  
+
   <div class='conteudo'>
     <% if @post.image.exists? %>
       <div class='imagem'>
         <%= image_tag @post.image.url(:medium) %>
       </div>
     <% end %>
-    <%= @post.content %>
+    <%= @post.content.html_safe %>
   </div><br><br>
 
   <%= render "comments/index", commentable: @post %>
