@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
+	rescue_from CanCan::AccessDenied do |exception|
+    if exception.action == :create
+      redirect_to new_user_session_path, :alert => 'You must be logged in to comment'
+    else
+      redirect_to '/', :alert => exception.message
+    end
+	end
   
   before_action :configure_permitted_parameters, if: :devise_controller?
 

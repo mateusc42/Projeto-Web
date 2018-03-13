@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   acts_as_paranoid
-  enum role: [:user, :admin, :superadmin]
+  enum role: [:user, :admin, :superadmin, :guest]
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role

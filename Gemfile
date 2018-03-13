@@ -33,10 +33,8 @@ gem 'paranoia'
 gem 'will_paginate'
 # Editor de Texto
 gem 'tinymce-rails'
-=begin
 # Biblioteca de Autorização
 gem 'cancancan'
-=end
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

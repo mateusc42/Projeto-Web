@@ -2,11 +2,9 @@
   <h1 class="title"><%= @post.title %></h1>
   <p class="date">
     Submitted <%= time_ago_in_words(@post.created_at) %> Ago
-    <% if user_signed_in? %>
-      <% if @post.user == current_user %>
-        | <font color="#008CBA"><%= link_to 'Editar', edit_post_path(@post) %></font>
-        | <font color="#f44336"><%= link_to 'Excluir', post_path(@post, type: :normal), method: :delete, data: { confirm: 'Você tem certeza?' } %></font>
-      <% end %>
+    <% if can? :update, @post %>
+      | <font color="#008CBA"><%= link_to 'Editar', edit_post_path(@post) %></font>
+      | <font color="#f44336"><%= link_to 'Excluir', post_path(@post, type: :normal), method: :delete, data: { confirm: 'Você tem certeza?' } %></font>
     <% end %>
     | <font color="#4CAF50"><%= link_to 'Voltar', posts_path, class: 'btn btn-outline-primary' %></font>
   </p><br>
