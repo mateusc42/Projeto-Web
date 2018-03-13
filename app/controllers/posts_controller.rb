@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  load_and_authorize_resource
   before_action :set_post, only: [:show, :edit, :update]
 
   def index
@@ -9,6 +9,10 @@ class PostsController < ApplicationController
       format.csv { send_data @posts.to_csv }
       format.xls # { send_data @posts.to_csv(col_sep: "\t") }
     end
+  end
+
+  def myposts
+    @posts = current_user.posts.order( created_at: :desc ).page(params[:page]).per_page(4)
   end
 
   def show

@@ -21,7 +21,7 @@
 
     <% if user_signed_in? %>
       <button class="buttonactions buttonactions1"><%= link_to "Abrir", post %></button>
-      <% if post.user == current_user %>
+      <% if can? :update, post %>
         <button class="buttonactions buttonactions2"><%= link_to "Editar", edit_post_path(post) %></button>
         <button class="buttonactions buttonactions3"><%= link_to 'Excluir', post_path(post, type: :normal), method: :delete, data: { confirm: 'Você tem certeza?' } %></button>
       <% end %>

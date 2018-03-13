@@ -7,10 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
                                         
-user_array = []                                                         
-(1..4).each do |num|                                                       
+user_array = []     
+
+(1..2).each do |num|                                                       
   user_array <<  User.create!(name: "User#{num}", email: "user#{num}@user.com", password: "123456", password_confirmation: "123456")                 
-end                                                                        
+end
+
+(1..2).each do |num|                                                       
+  user_array <<  User.create!(name: "User Admin#{num}", email: "useradmin#{num}@user.com", password: "123456", password_confirmation: "123456", role: 1)                 
+end                                                                          
 
 user_array.each do |user|                                            
   (1..2).each do |num|                                                    

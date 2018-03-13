@@ -54,6 +54,8 @@
           <p>Todos os Posts</p>
         <% elsif current_page?(about_path) %>
           <p>Sobre</p>
+        <% elsif current_page?(myposts_path) %>
+          <%= link_to "Voltar para Todos os Posts", root_path %>
         <% else %>
           <%= link_to "Voltar para Todos os Posts", root_path %>
         <% end %>
@@ -62,6 +64,7 @@
           <% if signed_in? and (current_user.admin? or current_user.superadmin?) %>
             Olá, <%= current_user.name %>
             <button class="button"><%= link_to "Criar Novo Post", new_post_path %></button>
+            <button class="button"><%= link_to "Meus Posts", myposts_path %></button>
             <button class="button"><%= link_to "Profile", edit_user_registration_path %></button>
             <button class="button"><%= link_to 'Log out', destroy_user_session_path, method: :delete, data: {confirm:"Você tem certeza?"}%></button>
           <% elsif signed_in? and current_user.user? %>
