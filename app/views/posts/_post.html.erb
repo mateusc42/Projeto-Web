@@ -12,9 +12,9 @@
       <%= post.user.name %> &bull;
       <%= post.created_at.strftime("%m %b %Y") %>
       <% if user_signed_in? %>
-        <%= simple_format truncate(post.content, length: 70){link_to "Ler mais", post} %>
+        <%= simple_format truncate(post.description, length: 70){link_to "Ler mais", post} %>
       <% else %>
-        <%= simple_format truncate(post.content, length: 280) %>
+        <%= simple_format truncate(post.description, length: 280) %>
         <h3><font color="#33acb7"><%= link_to "Ler mais", post%></font></h3>
       <% end %>
     </small>

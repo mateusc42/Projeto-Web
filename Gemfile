@@ -31,6 +31,8 @@ gem 'paperclip'
 gem 'paranoia'
 # Biblioteca de Paginação
 gem 'will_paginate'
+# Editor de Texto
+gem 'tinymce-rails'
 =begin
 # Biblioteca de Autorização
 gem 'cancancan'
