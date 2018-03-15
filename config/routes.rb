@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	root "posts#index"
 	get '/myposts', to: 'posts#myposts'
 	get '/about', to: 'pages#about'
+	get '/dashboard', to: 'pages#dashboard'
 	
 	resources :comments do
     resources :comments
@@ -11,5 +12,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-	devise_for :users, :controllers => { :registrations => 'registrations' }
+  devise_for :users, :controllers => { :registrations => 'registrations' }
 end

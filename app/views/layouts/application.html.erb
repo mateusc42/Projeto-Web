@@ -43,7 +43,7 @@
       <% end %>
       
       <% if signed_in? and current_user.superadmin? %>
-        <%= link_to "Admin Login", root_path, class: "sign_in" %>
+        <%= link_to "Admin Panel", dashboard_path, class: "sign_in" %>
       <% end %>
     </div>
     

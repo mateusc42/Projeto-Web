@@ -1,0 +1,218 @@
+<div class="container">
+
+	<div class="row col">
+		<h1>Painel de Controle (Em Construção)</h1>
+	</div>
+
+	<div class="row">
+		<div class="col content">
+			
+			<div class="wrapper">
+			  <div class="table">
+			    <div class="row header">
+			      <div class="cell">
+			        Título
+			      </div>
+			      <div class="cell">
+			        Author
+			      </div>
+			      <div class="cell">
+			        Ações
+			      </div>
+			    </div>
+
+			    <% @posts.each do |post| %>
+			      <div class="row">
+			        <div class="cell" data-title="Título">
+			        	<%= link_to (simple_format truncate(post.title, length: 10),:title => "Post"), post %>
+			        </div>
+			        <div class="cell" data-title="Author">
+			          <%= post.user.name %>
+			        </div>
+			        <div class="cell" data-title="Ações">
+			          <font color="#008CBA"><%= link_to 'Editar', edit_post_path(post) %></font>&nbsp
+			          <font color="#f44336"><%= link_to 'Excluir', post_path(post, type: :normal), method: :delete, data: { confirm: 'Você tem certeza?' } %></font>&nbsp
+			          <font color="#4CAF50"><%= link_to 'Abrir', post %></font>
+			        </div>
+			      </div>
+			    <% end %>  
+
+				</div>
+			</div>
+
+			<div class="row col">
+				<h1>Posts Deletados</h1>
+			</div>
+
+			<div class="wrapper">
+			  <div class="table">
+			    <div class="row header">
+			      <div class="cell">
+			        Título
+			      </div>
+			      <div class="cell">
+			        User ID
+			      </div>
+			      <div class="cell">
+			        Ações
+			      </div>
+			    </div>
+
+			    <% @posts.only_deleted.each do |post| %>
+			      <div class="row">
+			        <div class="cell" data-title="Título">
+			        	<%= simple_format truncate(post.title, length: 10) %>
+			        </div>
+			        <div class="cell" data-title="User ID">
+			          <%= post.user_id %>
+			        </div>
+			        <div class="cell" data-title="Ações">
+			          <font color="#008CBA"><%= link_to 'Restaurar', post_path(post, type: :undelete), method: :delete, data: { confirm: 'Você tem certeza?' } %></font><br>
+			          <font color="#f44336"><%= link_to 'Excluir Permanentemente', post_path(post, type: :forever), method: :delete, data: { confirm: 'Você tem certeza?' } %></font>
+			        </div>
+			      </div>
+			    <% end %>  
+
+				</div>
+			</div>
+
+			<div class="row col">
+				<h1>Alterar Roles</h1>
+			</div>
+			
+			<div class="wrapper">
+			  <div class="table">
+			    <div class="row header">
+			      <div class="cell">
+			        Email
+			      </div>
+			      <div class="cell">
+			        Role
+			      </div>
+			      <div class="cell">
+			        Ações
+			      </div>
+			    </div>
+
+			    <% @users.each do |user| %>
+			      <div class="row">
+			        <div class="cell" data-title="Email">
+			        	<%= user.email %>
+			        </div>
+			        <div class="cell" data-title="Role">
+			        	<%= simple_form_for user, url: "/users" do |f| %>
+									<%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+			        </div>
+			        <div class="cell" data-title="Ações">
+			          <font color="#008CBA"><%= link_to 'Alterar Role' %></font>
+								<% end %>
+			        </div>
+			      </div>
+			    <% end %>  
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col sidebar">
+
+			<div class="wrapper">
+			  <div class="table">
+			    <div class="row header">
+			      <div class="cell">
+			        Email
+			      </div>
+			      <div class="cell">
+			        Role
+			      </div>
+			      <div class="cell">
+			        Ações
+			      </div>
+			    </div>
+
+			    <% @users.each do |user| %>
+			      <div class="row">
+			        <div class="cell" data-title="Email">
+			        	<%= user.email %>
+			        </div>
+			        <div class="cell" data-title="Role">
+			        	<%= user.role %>
+			        </div>
+			        <div class="cell" data-title="Ações">
+			          <font color="#008CBA">Editar</font>
+			          <font color="#f44336">Excluir</font>
+			        </div>
+			      </div>
+			    <% end %>  
+
+				</div>
+			</div>
+
+			<div class="row col">
+				<h1>Usuários Deletados</h1>
+			</div>
+
+			<div class="wrapper">
+			  <div class="table">
+			    <div class="row header">
+			      <div class="cell">
+			        Email
+			      </div>
+			      <div class="cell">
+			        ID
+			      </div>
+			      <div class="cell">
+			        Ações
+			      </div>
+			    </div>
+
+			    <% @users.only_deleted.each do |user| %>
+			      <div class="row">
+			        <div class="cell" data-title="Email">
+			        	<%= user.email %>
+			        </div>
+			        <div class="cell" data-title="ID">
+			          <%= user.id %>
+			        </div>
+			        <div class="cell" data-title="Ações">
+			          <font color="#008CBA">Restaurar</font><br>
+			          <font color="#f44336">Permanentemente</font>
+			        </div>
+			      </div>
+			    <% end %>  
+
+				</div>
+			</div>
+
+			<div class="row col">
+				<h1>Observações</h1>
+			</div>
+
+			<div class="wrapper">
+			  <div class="table">
+			    <div class="row header">
+			      <div class="cell">
+			        Observações
+			      </div>
+			    </div>
+
+			      <div class="row">
+			        <div class="cell" data-title="Observações"><br>
+			        	1. Restaurar Primeiro os Usuários de Posts Deletados<br><br>
+						2. Identificar Authores Deletados pelos seus User ID<br><br>
+						3. Lembrar da Polimorfia ao Restaurar Comentários<br><br>
+						4. Tipos de Usuário:<br><p>
+						&nbsp&nbsp&nbsp&nbsp# Usuário Comum - 0<br><br>
+						&nbsp&nbsp&nbsp&nbsp# Usuário Admin - 1<br><br>
+						&nbsp&nbsp&nbsp&nbsp# Usuário SuperAdmin - 2<br><br>
+						&nbsp&nbsp&nbsp&nbsp# Usuário Visitante - 3<br><br></p>
+			        </div>
+			      </div> 
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
