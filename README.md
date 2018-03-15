@@ -1,24 +1,54 @@
-# README
+# Projeto WEB - Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Blog Docs](/Docs/Blog.png)
 
-Things you may want to cover:
+[![GitHub issues](https://img.shields.io/github/issues/mateusc42/Projeto-Web.svg)](https://github.com/mateusc42/Projeto-Web/issues)
+[![GitHub forks](https://img.shields.io/github/forks/mateusc42/Projeto-Web.svg)](https://github.com/mateusc42/Projeto-Web/network)
+[![GitHub license](https://img.shields.io/github/license/mateusc42/Projeto-Web.svg)](https://github.com/mateusc42/Projeto-Web)
+[![GitHub release](https://img.shields.io/github/release/mateusc42/Projeto-Web.svg)](https://github.com/mateusc42/Projeto-Web/releases)
 
-* Ruby version
+Versão 1.0 do projeto web de um blog.
 
-* System dependencies
+## Instalação
 
-* Configuration
+Rode os Seguintes Comandos:
 
-* Database creation
+	bundle install
+	rake db:create
+	rake db:migrate
 
-* Database initialization
+Caso Queira Criar Alguns Usuários e Posts:
 
-* How to run the test suite
+	rake db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+Para rodar o projeto:
 
-* Deployment instructions
+	rails s
 
-* ...
+## Gem's Utilizadas no Projeto
+
+	Criação de usuários comuns e administradores
+	gem 'devise'
+
+	Ajuda na criação de formulários
+	gem 'simple_form'
+
+	Renderização do navegadores de forma padronizada
+	gem 'normalize-rails'
+
+	Biblioteca de Anexos
+	gem 'paperclip'
+
+	Soft Delete 
+	gem 'paranoia'
+
+	Biblioteca de Paginação
+	gem 'will_paginate'
+
+	Editor de Texto
+	gem 'tinymce-rails'
+
+	Biblioteca de Autorização
+	gem 'cancancan'
+
+> **Nota:** Esse projeto foi desenvolvido em ambiente linux, caso ocorra alguma incompatibilidade.
