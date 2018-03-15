@@ -1,5 +1,5 @@
 # Projeto WEB - Blog
-
+Aplicação Web de um Blog para Seleção de Estágio na Tracking Trade
 ![Blog Docs](/Docs/Blog.png)
 
 [![GitHub issues](https://img.shields.io/github/issues/mateusc42/Projeto-Web.svg)](https://github.com/mateusc42/Projeto-Web/issues)
